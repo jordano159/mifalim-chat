@@ -5,16 +5,16 @@ class WhatsAppBot < Sinatra::Base
     body = params["Body"].downcase
     response = Twilio::TwiML::MessagingResponse.new
     response.message do |message|
-      if body.include?("dog")
-        message.body(Dog.fact)
-        message.media(Dog.picture)
+      if body.include?("מחנה")
+        message.body("צריך לעשות תדריך כיבוי אש והסעת חניכים")
+        # message.media(Dog.picture)
       end
-      if body.include?("cat")
-        message.body(Cat.fact)
-        message.media(Cat.picture)
+      if body.include?("טיול")
+        message.body("צריך לעשות תדריך מילוי מים והסעת חניכים")
+        # message.media(Cat.picture)
       end
-      if !(body.include?("dog") || body.include?("cat"))
-        message.body("I only know about dogs or cats, sorry!")
+      if !(body.include?("מחנה") || body.include?("טיול"))
+        message.body("מצטער, אני מכיר רק מחנות וטיולים")
       end
     end
     content_type "text/xml"
